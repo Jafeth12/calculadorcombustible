@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<title>Litros</title>
+	<style type="text/css">
+		body {
+			padding: 10px;
+			background-color: #202020;
+			font-family: "FreeMono";
+		}
+
+		.container {
+			width: 20%;
+			height: 800px;
+			margin: auto;
+			text-align: center;
+			padding: 5px;
+		}
+
+		.content {
+			border: 2px solid #252525;
+			width: 60%;
+			padding: 15px;
+			margin: 0 auto;
+			position: relative;
+			text-align: left; 
+			background-color: gray;
+			box-shadow: 0 8px 6px -6px black;
+		}
+
+		label {
+  			display: inline-block;
+  			text-align: right;
+  			font-size: 18px;
+		}​
+		
+	</style>
+</head>
+	<body>
+		<div class="container">
+			<h2 style="color: gray">LITROS CALCULATOR</h2>
+					<div class="content">
+						<div class="block">
+							<label style="color: #151515;margin-bottom: 10px;">Minutos de carrera: </label>
+					    	<input type="text" id="totalMin" value="" size="2">
+						</div>
+						<div class="block">
+							<label style="color: #151515;margin-bottom: 10px;">Laptime(min, sec): </label>	
+					    	<input type="text" id="lapMin" value="" size="1">	
+					    	<input type="text" id="lapSec" value="" size="2">
+					    					    	
+						</div>
+						<div class="block">
+							<label style="color: #151515;margin-bottom: 10px;">Litros/vuelta: </label>
+					    	<input type="text" id="litrosPorVuelta" value="" size="5">			
+						</div>
+						
+						<button onclick="calcular()">Calcular</button>
+						<button onclick="clears()">Clear</button>
+						<h2 id="res" style="text-align:center;color: #151515;"></h2>
+						<h2 id="res2" style="text-align:center;color: #151515;"></h2>
+				</div>
+		</div>
+	</body>
+	<script>
+		function clears() {
+			document.getElementById("res").innerHTML = "";
+			document.getElementById("res2").innerHTML = "";
+			document.getElementById("totalMin").value = "";
+			document.getElementById("lapMin").value = "";
+			document.getElementById("lapSec").value = "";
+			document.getElementById("litrosPorVuelta").value = "";
+		}
+
+		function calcular() {
+			let totalMin = parseFloat(document.getElementById("totalMin").value);
+			let lapMin = parseFloat(document.getElementById("lapMin").value);
+			let lapSec = parseFloat(document.getElementById("lapSec").value);
+			let litrosPorVuelta = parseFloat(document.getElementById("litrosPorVuelta").value);
+
+			let laptime = (lapMin*60) + lapSec;
+			let litros = (((totalMin*60)/laptime)*litrosPorVuelta).toFixed(3);
+			let vueltas = (totalMin*60/laptime).toFixed(1);
+
+			document.getElementById("res").innerHTML = litros + " litros";
+			document.getElementById("res2").innerHTML = vueltas + "~ vueltas";
+		}
+		
+		
+		clears();
+
+	</script>
+</html>
