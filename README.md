@@ -1,6 +1,9 @@
 # calculadorcombustible
+
 FILE QUE CALCULA COMBUSTIBLE
 
-#todo
 
--falta añadir modo vueltas y no minutos
+
+#### todo
+
+- ~~falta añadir modo vueltas y no minutos~~
